@@ -1,0 +1,39 @@
+{
+  "name": "greeter",
+  "description": "Discord bot that greets new users and asks them predefined questions",
+  "version": "0.1.0",
+  "homepage": "https://github.com/seanc/greeter",
+  "author": "Sean Wilson (https://imsean.me)",
+  "repository": "seanc/greeter",
+  "bugs": {
+    "url": "https://github.com/seanc/greeter/issues"
+  },
+  "license": "MIT",
+  "files": [
+    "LICENSE",
+    "bin",
+    "bot",
+    "lib"
+  ],
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {
+    "start": "node ./bin/greeter"
+  },
+  "dependencies": {
+    "async-waterfall": "^0.1.5",
+    "catlog": "^1.0.9",
+    "dedent": "^0.6.0",
+    "discord.js": "^10.0.1",
+    "each-async": "^1.1.1",
+    "erlpack": "github:hammerandchisel/erlpack",
+    "log-cb": "^0.2.1",
+    "minimist": "^1.2.0",
+    "pixie": "^0.2.2",
+    "pixie-dot": "^0.1.1",
+    "rc": "^1.1.6",
+    "require-glob": "^3.2.0",
+    "spawn-args": "^0.2.0"
+  }
+}

@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+
+const manager = require('../lib/manager')
+manager.spawn(1)
