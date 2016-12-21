@@ -3,12 +3,13 @@ const spawnargs = require('spawn-args')
 const config = require('../lib/config')
 const { Client } = require('discord.js')
 const logcb = require('log-cb')
+const minimist = require('minimist')
 
 const bot = new Client()
 
 function bootstrap(bot, config) {
   const commands = new Map()
-
+  bot._commands = commands 
 
   glob(['./{commands,listeners}/**/*.js']).then(modules => {
     modules = Object.assign({}, modules.listeners || {}, modules.commands || {})
@@ -19,10 +20,9 @@ function bootstrap(bot, config) {
     }
   }).catch(err => console.log(err))
 
-
   bot.on('message', message => {
-    if (!message.content.startsWith(config.prefix)) return
-    const prefix = config.prefix
+    if (!message.content.startsWith(config.bot.prefix)) return
+    const prefix = config.bot.prefix
     const input = spawnargs(message.content.slice(prefix.length))
     const parse = minimist(input)
     const name = parse._.shift()
@@ -32,13 +32,13 @@ function bootstrap(bot, config) {
 
     if (commands.has(name)) {
       const command = commands.get(name)
-      if (command.getAdmin() && !config.admin.includes(message.author.id)) return
+      if (command.getAdmin() && !config.groups.admin.includes(message.author.id)) return
       command.handle(message, args, flags)
     }
   })
 
   bot.on('error', logcb.err())
-  bot.login(config.token)
+  bot.login(config.bot.token)
 }
 
 // console.log(config)

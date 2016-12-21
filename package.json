@@ -19,7 +19,7 @@
     "node": ">=6"
   },
   "scripts": {
-    "start": "node ./bin/greeter"
+    "start": "node ./bin/kbve-bot"
   },
   "dependencies": {
     "async-waterfall": "^0.1.5",

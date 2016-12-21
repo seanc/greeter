@@ -1,42 +1,45 @@
-# greeter
+# kbve-bot
 
-> Discord bot that greets new users and asks them predefined questions
+> Discord moderation and management bot for KBVE
 
 ## Installation
 
 ```sh
-$ npm install -g seanc/greeter
+$ npm install -g seanc/kbve-bot
 ```
 
 ## Usage
-Make sure `.greeterrc` is in the same directory when running the command
+Make sure `.kbvebotrc` is in the same directory when running the command
 
 ```sh
 $ greeter
 ```
 
 Example config
-```json
-{
-  "token": "Mj...",
-  "guild": "",
-  "verificationChannel": "",
-  "questions": [
-    "What is your username?",
-    "What ranks do you have?",
-    "What groups are you in?",
-    "What name colors do you have, if any?"
-  ]
-}
+```ini
+[bot]
+token = Mj...
+prefix = $
+
+[greet]
+message = Hello {{users}}, welcome to KBVE.
+threshold = 5
+
+[logging]
+channel = 260651293356457984
+
+[groups]
+admin = 105120056215625728
 ```
 
-| Key                 | Description                                                  |
-| ------------------- | ------------------------------------------------------------ |
-| token               | Discord bot token                                            |
-| guild               | Guild ID you'd like to listen on for new members             |
-| verificationChannel | Channel name excluding hashtag to send verification requests |
-| questions           | An array of questions to ask                                 |
-
+| Key             | Description                                                          |
+| --------------- | -------------------------------------------------------------------- |
+| bot.token       | Bot token                                                            |
+| bot.prefix      | Command prefix                                                       |
+| greet.message   | Message format for welcoming users                                   |
+| greet.threshold | For every (n) user, welcome them all                                 |
+| logging.channel | Channel to log various data to, should be private                    |
+| groups.admin    | List of user IDS you want to allow access to administrative commands |
 ## License
 
 MIT © [Sean Wilson](https://imsean.me)
